@@ -3,10 +3,10 @@
 ## Introduction
 This application collects and displays charts of Google Cloud Billing exports to facilitate analysis of overall cloud spend.
 
-The app consistes of 3 main components: A Database for storing and quering the line items, An import tool to pull export files off Google Storage and load to the database, and of course the Web UI that queries the database and displays the data.
+The app consists of 3 main components: A Database for storing and quering the line items, An import tool to pull export files off Google Storage and load to the database, and of course the Web UI that queries the database and displays the data.
 
 ### Quick Start
-The easiset way to try out the system is to use [Docker](https://docs.docker.com/) and [Docker Compose](https://docs.docker.com/compose/). The following commands will install, link and run the components.
+The easiest way to try out the system is to use [Docker](https://docs.docker.com/) and [Docker Compose](https://docs.docker.com/compose/). The following commands will install, link and run the components.
 
   $ docker-compose build
   $ docker-compose up
