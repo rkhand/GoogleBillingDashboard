@@ -1,0 +1,51 @@
+<div class="col-md-12" ng-controller="CostCenterController">
+
+    <div class="row-fuild">
+        <div class="panel panel-default">
+            <h2 class="text-center">
+                 <span class="fa-stack fa-lg">
+              <i class="fa fa-square-o fa-stack-2x text-success"></i>
+              <i class="fa fa-dollar fa-stack-1x text-success"></i>
+            </span>
+                Billing Info per Cost Center
+                <a class="btn btn-primary pull-right" ng-href="projects" ng-show="isLogged()"
+                   style="margin-right: 10px;">
+                    <i class="fa fa-plus"></i> Center</a>
+            </h2>
+            <hr class="clear">
+            <h3 class="pull-right add-padding">   <a ng-href="{{ centerURL('all') }}">Overall Cost</a>:${{ totalCost | number:2}} </h3>
+            <hr class="clear">
+            <div class="panel-body">
+                <div class="col-md-2"></div>
+                <div class="table-responsive col-md-8">
+                    <table class="table table-stripped table-bordered" ng-show="costCenterList.length">
+                        <thead>
+                        <th class="bg-warning text-center">Cost Center</th>
+                        <th class="bg-warning text-center">Cost for current month</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="cost_center in costCenterList">
+                            <td class="text-info cost_center">
+                                <a ng-href="{{ centerURL(cost_center.name) }}">{{ cost_center.name }}</a>
+                            </td>
+                            <td class="text-info">
+                                ${{ cost_center.cost | number:2 }}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="clear panel-body bg-info text-center" ng-hide="costCenterList.length">
+                No data available for current month yet, try again later.
+            </div>
+
+            <div ng-include="'/static/partials/loading.html'"></div>
+            <!-- panel-body main -->
+
+        </div>
+        <!-- panel -->
+    </div>
+    <!-- end of row-->
+</div>

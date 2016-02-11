@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="cuApp">
+<head>
+    <link rel="icon"
+          type="image/png"
+          href="/static/img/hd-logo.png">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'commonCSS.html' %}
+     {% block customcss %}{% endblock %}
+</head>
+<body>
+{% include 'nav_bar.html' %}
+<div class="">
+    {% block content %}{% endblock %}
+</div>
+
+
+{% include 'footer.html' %}
+
+{% include 'commonJS.html' %}
+
+ {% block customjs %}{% endblock %}
+</body>
+</html>

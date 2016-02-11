@@ -1,0 +1,125 @@
+<div class="col-md-12" ng-controller="UsageController">
+
+    <div class="row-fuild">
+        <div class="panel panel-default">
+            <h2 class="text-center">
+                 <span class="fa-stack fa-lg">
+              <i class="fa fa-square-o fa-stack-2x text-success"></i>
+              <i class="fa fa-dollar fa-stack-1x text-success"></i>
+            </span>
+                Billing Report for <span class="cost_center">{{ costCenterSelected }}</span>
+            </h2>
+            <hr>
+
+            <label class="col-md-3 pull-right add-padding"><h2>Total Cost : ${{ totalCost }}</h2></label>
+
+            <hr class="clear">
+            <div class="panel-body">
+                <div class="col-md-3">
+                    <label>Year :</label><br>
+                    <select class="form-control" ng-model="yearSelected"
+                            ng-change="updateURL()">
+                        <option ng-repeat="year in yearList" value="{{ year }}"
+                                ng-selected="{{ year == yearSelected }}">{{ year }}</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mB-10">
+                    <label>Month :</label><br>
+                    <select class="form-control" ng-model="monthSelected"
+                            ng-change="updateURL()">
+                        <option ng-repeat="month in monthList" ng-selected="{{ month.value == monthSelected }}"
+                                value="{{ month.value }}">{{ month.displayName }}</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mB-10" ng-show="costCenterSelected !='all' && projectList.length">
+                    <label>Projects:</label><br>
+                    <select class="form-control" ng-model="projectSelected"
+                            ng-change="updateURL()">
+                        <option value="all">All</option>
+                        <option ng-repeat="project_name in projectList" value="{{ project_name }}"
+                                ng-selected="{{ project_name == projectSelected }}">{{ project_name }}</option>
+
+                    </select>
+                </div>
+                <div class="col-md-3 mB-10" ng-show="costCenterSelected !='all'  && resourceList.length">
+                    <label>Resources:</label><br>
+                    <select class="form-control" ng-model="resourceSelected"
+                            ng-change="updateURL()">
+                        <option value="all">All</option>
+                        <option ng-repeat="resource in resourceList " value="{{ resource }}"
+                                ng-selected="{{ resource == resourceSelected }}">{{ resource }}</option>
+
+                    </select>
+                </div>
+                <br>
+                <hr class="clear">
+                <div id="container" class="col-md-12"></div>
+                <div id="d3-container" class="col-md-12 with-3d-shadow with-transitions">
+
+                </div>
+
+                <div ng-if='fail' class="">
+                    <div ng-class="{blue:'bg-info panel-body text-center', red:'bg-danger panel-body text-center'}[class_name]"
+                         ng-show="message"
+                         ng-bind-html="message">
+                    </div>
+
+                </div>
+                <hr class="clear">
+                <div class="" ng-show="display_table">
+                    <div class="table-responsive" id="dvData">
+                        <div class="col-md-5">
+                            <table class="table table-bordered  table-striped">
+                                <tbody>
+                                <tr>
+                                    <td style="font-weight: bold">Year</td>
+                                    <td style="font-weight: bold">{{ yearSelected }}</td>
+                                </tr>
+                                <tr ng-show="monthSelected !='all'">
+                                    <td style="font-weight: bold">Month</td>
+                                    <td style="font-weight: bold">{{ monthSelectedName }}</td>
+                                </tr>
+                                <tr ng-show="projectSelected !='all'">
+                                    <td style="font-weight: bold">Project</td>
+                                    <td style="font-weight: bold">{{ projectSelected }}</td>
+                                </tr>
+                                <tr ng-show="resourceSelected !='all'">
+                                    <td style="font-weight: bold">Resource</td>
+                                    <td style="font-weight: bold">{{ resourceSelected }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <th class="text-center">Type</th>
+                                <th class="text-center">Cost</th>
+                                <th class="text-center" ng-show="resourceSelected !='all'&& monthSelected !='all'">Usage
+                                </th>
+                                </thead>
+                                <tr ng-repeat="x in costData">
+                                    <td class="text-center">{{ x.name }}</td>
+                                    <td class="text-center">${{ x.cost  | number:2}}</td>
+                                    <td class="text-center"
+                                        ng-show="usage_display()">{{ x.usage |bytes }} {{ x.unit }}</td>
+
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a id='export'class="btn btn-success" ng-click="export()">Export to Excel
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- panel-body main -->
+
+        </div>
+        <!-- panel -->
+    </div>
+    <!-- end of row-->
+</div>

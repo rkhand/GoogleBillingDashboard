@@ -1,0 +1,47 @@
+<div class="panel panel-primary"  style="margin-bottom: 0">
+    <div class="panel-heading">
+        <h2 class="text-center"> Login</h2>
+    </div>
+    <div class="panel-body">
+        <form name="userForm" ng-submit="ok()" novalidate ng-show="displayForm">
+
+            <!-- USERNAME -->
+            <div class="form-group"
+                 ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" ng-model="user.username" required>
+
+                <p ng-show="userForm.username.$invalid && !userForm.username.$pristine" class="help-block">Username is
+                    required.</p>
+
+            </div>
+
+            <!-- EMAIL -->
+            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" ng-model="user.password" required>
+
+                <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">Password is
+                    required.</p>
+            </div>
+            <hr>
+
+            <button type="submit" class="btn btn-primary btn-block" ng-disabled="userForm.$invalid">Submit</button>
+            <div class="btn btn-danger btn-block" ng-click="cancel()">Cancel</div>
+
+        </form>
+
+
+        <div ng-if='msg' class="text-center">
+            <div ng-class="{blue:'bg-info panel-body text-center', red:'bg-danger panel-body text-center'}[class_name]"
+                 ng-show="message"
+                 ng-bind-html="message">
+            </div>
+            <hr>
+            <div ng-show="displayOk" class="btn btn-success mB-10" ng-click="cancel()">Ok</div>
+        </div>
+        <div class="text-center" ng-show="loading">
+            <i class="fa fa-spin fa-spinner fa-3x"></i>
+        </div>
+    </div>
+</div>

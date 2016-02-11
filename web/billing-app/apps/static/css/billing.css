@@ -1,0 +1,53 @@
+#d3-container {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    background-color: #fff;
+}
+
+#d3-container text {
+    fill: #000;
+    font: 10px sans-serif;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.x.axis path {
+    display: none;
+}
+
+.grid .tick {
+    stroke: lightgrey;
+    opacity: 0.7;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+.nvtooltip table {
+    table-layout: auto;
+    width: inherit;
+}
+
+.nvtooltip td {
+    border: none;
+
+}
+.nvtooltip thead td{
+    border-bottom: 5px solid #000;
+    text-align: center;
+}
+.nvtooltip tbody td{
+    padding: 10px;
+}
+
+.cost_center{
+    text-transform: capitalize;
+}

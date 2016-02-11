@@ -1,0 +1,18 @@
+<div class="panel panel-danger" ng-show="type == 'delete'" style="margin-bottom: 0px">
+    <div class="panel-heading text-center">
+        Delete -- {{ project.project_name }}
+    </div>
+    <div class="panel-body">
+        <div ng-hide="loading">
+            Are you sure about deleting <b>{{ project.project_name }} </b>from <b>{{ project.cost_center }}</b>?
+            <hr>
+            <div class="text-center">
+                <div class="btn btn-success" ng-click="delete()">Delete</div>
+                <div class="btn btn-danger" ng-click="close()">Cancel</div
+            </div>
+        </div>
+
+
+        <div ng-include="'/static/partials/loading.html'"></div>
+    </div>
+</div>

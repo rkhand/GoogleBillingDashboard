@@ -1,0 +1,83 @@
+/* Status css*/
+.add-padding {
+    padding: 10px 10px;
+}
+
+.mB-10 {
+    margin-bottom: 10px !important;
+}
+
+.clear {
+    clear: both;
+}
+
+i.fa.fa-sort-up, i.fa.fa-sort-down, i.fa.fa-times,[data-id=login],[data-id=logout]{
+    cursor: pointer;
+}
+
+select option {
+    text-transform: capitalize;
+}
+
+/* Audit*/
+@media (min-width: 768px) {
+    th, td {
+        border-style: solid;
+        border-width: 5px;
+        border-color: #BCBCBC;
+        word-wrap: break-word;
+    }
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+}
+
+/*Login*/
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.main{
+    margin-top: 50px;
+}

@@ -1,0 +1,14 @@
+{% extends "defaultTemplate.html" %}
+{% block customcss %}
+    <link rel="stylesheet" href="/static/css/billing.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid main">
+        <div ng-include="'/static/partials/billing/cost_center.html'"></div>
+    </div>
+{% endblock %}
+
+{% block customjs %}
+    <script src="/static/assets/js/billing.min.js"></script>
+{% endblock %}

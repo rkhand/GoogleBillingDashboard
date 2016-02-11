@@ -1,0 +1,10 @@
+<div ng-if='fail' class="">
+    <div ng-class="{blue:'bg-info panel-body text-center', red:'bg-danger panel-body text-center'}[class_name]"
+         ng-show="message"
+         ng-bind-html="message">
+    </div>
+
+</div>
+<div class="text-center" ng-show="loading">
+    <i class="fa fa-spin fa-spinner fa-3x"></i>
+</div>

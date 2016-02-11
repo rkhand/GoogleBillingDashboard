@@ -1,0 +1,19 @@
+web:
+  build: ./web
+  restart: always
+  ports:
+    - "80:8080"
+  links:
+    - mysql:billingapp
+    - gcbillanalyzer:gcbillanalyzer
+mysql:
+  restart: always
+  build: ./mysql_files
+
+gcbillanalyzer:
+  restart: always
+  build: ./gcbillanalyzer
+  links:
+    - mysql:gcbillanalyzer
+  extra_hosts:
+    - "metadata:169.254.169.254"

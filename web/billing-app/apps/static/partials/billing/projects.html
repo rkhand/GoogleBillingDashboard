@@ -1,0 +1,162 @@
+<div class="col-md-12" ng-controller="ProjectsController" ng-show="isLogged()">
+
+    <div class="row-fluid">
+        <div class="panel panel-default">
+            <h2 class="text-center">
+                 <span class="fa-stack fa-lg">
+              <i class="fa fa-square-o fa-stack-2x text-success"></i>
+              <i class="fa fa-file fa-stack-1x text-success"></i>
+            </span>
+                Project Info
+            </h2>
+            <hr class="clear">
+            <div class="panel-body">
+                <div class="col-md-10">
+                    <div class="panel-body bg-danger" ng-show="message">
+                        {{ message }} <i class="fa fa-times pull-right" ng-click="clear()">Close</i>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="btn btn-primary pull-right mB-10" ng-click="addOne()">
+                        <i class="fa fa-plus-square-o"></i> Project
+                    </div>
+                </div>
+
+                <div class="panel-body bg-warning clear mB-10" ng-show="add">
+                    <form name="projectForm" ng-submit="add_save()" novalidate>
+                        <!-- Project ID -->
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : projectForm.project_id.$invalid && !projectForm.project_id.$pristine }">
+                            <label class="col-md-3 text-right add-padding">Project ID</label>
+
+                            <div class="col-md-3 mB-10">
+                                <input value="" name="project_id" class="form-control" ng-model="projectInfo.project_id"
+                                       required placeholder="Enter a Project ID" disabled>
+
+                                <p ng-show="projectForm.project_id.$invalid && !projectForm.project_id.$pristine"
+                                   class="help-block">
+                                    Project ID
+                                    is
+                                    required.</p>
+                            </div>
+
+
+                        </div>
+                        <!-- Project Name-->
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : projectForm.project_name.$invalid && !projectForm.project_name.$pristine }">
+                            <label class="col-md-3 text-right add-padding">Project Name</label>
+
+                            <div class="col-md-3 mB-10">
+                                <input value="" name="project_name" class="form-control"
+                                       ng-model="projectInfo.project_name" placeholder="Enter a Project Name"
+                                       required>
+
+                                <p ng-show="projectForm.project_name.$invalid && !projectForm.project_name.$pristine"
+                                   class="help-block">
+                                    Project Name
+                                    is
+                                    required.</p>
+                            </div>
+
+
+                        </div>
+                        <!-- Cost Center Name-->
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : projectForm.cost_center.$invalid && !projectForm.cost_center.$pristine }">
+                            <label class="col-md-3 text-right clear add-padding">Cost Center</label>
+
+                            <div class="col-md-3 mB-10">
+                                <input value="" name="cost_center" class="form-control"
+                                       ng-model="projectInfo.cost_center" placeholder="Enter a Cost Center Name"
+                                       required>
+
+                                <p ng-show="projectForm.cost_center.$invalid && !projectForm.cost_center.$pristine"
+                                   class="help-block">
+                                    Cost Center Name
+                                    is
+                                    required.</p>
+                            </div>
+
+                        </div>
+                        <!-- Director Name-->
+                        <div class="form-group"
+                             ng-class="{ 'has-error' : projectForm.director.$invalid && !projectForm.director.$pristine }">
+                            <label class="col-md-3 text-right add-padding">Director</label>
+
+                            <div class="col-md-3 mB-10">
+                                <input value="" name="director" class="form-control" ng-model="projectInfo.director"
+                                       placeholder="Enter a Director Name"
+                                       required>
+
+                                <p ng-show="projectForm.director.$invalid && !projectForm.director.$pristine"
+                                   class="help-block">
+                                    Director Name
+                                    is
+                                    required.</p>
+                            </div>
+
+                        </div>
+
+                        <hr class="clear">
+                        <div class="text-center">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary btn-block"
+                                        ng-disabled="projectForm.$invalid || loading">Save
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="btn btn-danger btn-block" ng-click="close_add()">Cancel</div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-responsive table table-bordered">
+                        <thead>
+                        <th class="text-center bg-warning">Project ID</th>
+                        <th class="text-center bg-warning">Project Name</th>
+                        <th class="text-center bg-warning">Cost Center</th>
+                        <th class="text-center bg-warning">Director</th>
+                        <th class="text-center bg-warning">Actions</th>
+                        </thead>
+                        <tbody>
+                        <tr  id="{{ project.project_name}}" ng-repeat="project in projectList" class="cost_center">
+                            <td class="text-center">
+
+                                <a ng-show="project.project_id !='Not Available'"
+                                   ng-href="https://console.developers.google.com/project/{{ project.project_id | split:'-':1}}" target="_blank">
+                                    {{ project.project_id | split:'-':1}}</a>
+                                <span ng-show="project.project_id =='Not Available'">
+                                    {{ project.project_id }}</span>
+                            </td>
+                            <td class="text-center">{{ project.project_name }}</td>
+                            <td class="text-center">{{ project.cost_center }}</td>
+                            <td class="text-center">{{ project.director }}</td>
+                            <td class="text-center">
+                                <i class="fa fa-pencil text-info" ng-click="addOne(project)"
+                                   style="cursor: pointer"></i>
+                                <i class="fa fa-times text-danger" ng-click="delete(project)"
+                                   style="cursor: pointer"></i>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+            <!-- panel-body main -->
+
+        </div>
+        <!-- panel -->
+    </div>
+    <!-- end of row-->
+</div>
+<div ng-hide="isLogged()" class="col-md-12" ng-include="'/static/partials/authorization.html'"></div>
