@@ -25,7 +25,7 @@ On a mac simply run:
 1. Enable Billing Export
   - Google provides the ability to [export your billing](https://support.google.com/cloud/answer/6293835?rd=1) information to a storage bucket. The process runs nightly so you'll need to wait until it runs after you enable the feature.
 2. Tell the loader where the export bucket is
-  - Update gcbillanalyzer/src/main/resources/config.properties with the google storage bucket details
+  - Update gcbillanalyzer/gcbillanalyzer/src/main/resources/config.properties with the google storage bucket details
 
 ### Database Settings
 1. Modify ./docker_compose.yml
